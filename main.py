@@ -235,42 +235,42 @@ elif choose == "Classification" :
     st.write("")
     if( option == "Jeu de données 1" and option1 == "Fenêtrage 5, 3" ) :
         model = pickle.load(open("cn_5w/cn_5w.pkl",'rb'))
-        fv = pd.read_csv("cn_5w/df1_5w.csv")
+        fv = pd.read_csv("cn_5w/df1_5W.csv")
         a,b,c=st.columns([0.5,4,0.5])
         with b:
             st.write( "### Taux de reconnaissance du modèle : 96.89%" )
         
     if( option == "Jeu de données 1" and option1 == "Fenêtrage 4, 4" ) :
         model = pickle.load(open("cn_4w/cn_4w.pkl",'rb'))
-        fv = pd.read_csv("cn_4w/df1_4w.csv")
+        fv = pd.read_csv("cn_4w/df1_4W.csv")
         a,b,c=st.columns([0.5,4,0.5])
         with b:
             st.write( "### Taux de reconnaissance du modèle : 95.43%" )
             
     if( option == "Jeu de données 2" and option1 == "Fenêtrage 5, 3" ) :
         model = pickle.load(open("fc_5w/fc_5w.pkl",'rb'))
-        fv = pd.read_csv("fc_5w/df2_5w.csv")
+        fv = pd.read_csv("fc_5w/df2_5W.csv")
         a,b,c=st.columns([0.5,4,0.5])
         with b:
             st.write( "### Taux de reconnaissance du modèle : 98.01%" )
             
     if( option == "Jeu de données 2" and option1 == "Fenêtrage 4, 4" ) :
         model = pickle.load(open("fc_4w/fc_4w.pkl",'rb'))
-        fv = pd.read_csv("fc_4w/df2_4w.csv")
+        fv = pd.read_csv("fc_4w/df2_4W.csv")
         a,b,c=st.columns([0.5,4,0.5])
         with b:
             st.write( "### Taux de reconnaissance du modèle : 98.08%" )
             
     if( option == "Jeu de données 3" and option1 == "Fenêtrage 5, 3" ) :
         model = pickle.load(open("ss_5w/ss_5w.pkl",'rb'))
-        fv = pd.read_csv("ss_5w/df3_5w.csv")
+        fv = pd.read_csv("ss_5w/df3_5W.csv")
         a,b,c=st.columns([0.5,4,0.5])
         with b:
             st.write( "### Taux de reconnaissance du modèle : 96.56%" )
     
     if( option == "Jeu de données 3" and option1 == "Fenêtrage 4, 4" ) :
         model = pickle.load(open("ss_4w/ss_4w.pkl",'rb'))
-        fv = pd.read_csv("ss_4w/df3_4w.csv")
+        fv = pd.read_csv("ss_4w/df3_4W.csv")
         a,b,c=st.columns([0.5,4,0.5])
         with b:
             st.write( "### Taux de reconnaissance du modèle : 95.30%" )
