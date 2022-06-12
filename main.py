@@ -101,7 +101,7 @@ classes_df = pd.DataFrame( {'labels':labels} )
 
 if choose == "Accueil" :
     st.title( "Prétraitement, extraction des caractéristiques et reconnaissance des mots arabes manuscrits pris de la base de données IFN/ENIT" )
-    st.write( "### Après avoir choisi un jeu de données et un fenêtrage, vous pouvez tester une image de la base de données e1t observer le prétraitement utilisé, l'extraction de ses caractéristiques et sa classification." )
+    st.write( "### Après avoir choisi un jeu de données et un fenêtrage, vous pouvez tester une image de la base de données et observer le prétraitement utilisé, l'extraction de ses caractéristiques et sa classification." )
 
 elif choose == "Prétraitement" :
     image = cv2.imread( "ae09_011.bmp", 0 )
