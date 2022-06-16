@@ -133,13 +133,13 @@ elif choose == "Prétraitement" :
     #with col5 :
      #   button3 = st.button( "Fenêtrage : 4Fenêtres, 4PixelsChevauchement", key="fenetrage4" )'''
     
-    st.write("#### Fenêtrage" )
-    col4, col5 = st.columns(2)
-    with col4 :
-        optionF = st.selectbox( "Choisissez le fenêtrage: ", ('-', '3 fenêtres', '4 fenêtres', '5 fenêtres', '6 fenêtres', '7 fenêtres', '8 fenêtres', '9 fenêtres') )
+    #st.write("#### Fenêtrage" )
+    #col4, col5 = st.columns(2)
+    #with col4 :
+     #   optionF = st.selectbox( "Choisissez le fenêtrage: ", ('-', '3 fenêtres', '4 fenêtres', '5 fenêtres', '6 fenêtres', '7 fenêtres', '8 fenêtres', '9 fenêtres') )
     
-    with col5 :
-        optionC = st.selectbox( "Choisissez le chevauchement : ", ('-', '2 pixels', '3 pixels', '4 pixels', '5 pixels', '6 pixels', '7 pixels', '8 pixels', '9 pixels') )
+    #with col5 :
+     #   optionC = st.selectbox( "Choisissez le chevauchement : ", ('-', '2 pixels', '3 pixels', '4 pixels', '5 pixels', '6 pixels', '7 pixels', '8 pixels', '9 pixels') )
 
     if( button1 ) :
         image_contour = contour( image )
