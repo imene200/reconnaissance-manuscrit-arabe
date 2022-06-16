@@ -103,7 +103,7 @@ classes_df = pd.DataFrame( {'labels':labels} )
 
 if choose == "Accueil" :
     st.title( "Reconnaissance des mots arabes manuscrits pris de la base de données IFN/ENIT" )
-    st.write( "### Après avoir choisi un jeu de données et un fenêtrage, vous pouvez tester une image de la base de données e1t observer le prétraitement utilisé, l'extraction de ses caractéristiques et sa classification." )
+    st.write( "### Après avoir choisi un jeu de données et un fenêtrage, vous pouvez tester une image de la base de données et observer le prétraitement utilisé, l'extraction de ses caractéristiques et sa classification." )
 
 elif choose == "Prétraitement" :
     image = cv2.imread( "ae09_011.bmp", 0 )
@@ -140,20 +140,7 @@ elif choose == "Prétraitement" :
     
     with col5 :
         optionC = st.selectbox( "Choisissez le chevauchement : ", ('-', '2 pixels', '3 pixels', '4 pixels', '5 pixels', '6 pixels', '7 pixels', '8 pixels', '9 pixels') )
-        
 
-    if( optionF != "-" and optionC != "-" ) :
-        f = int(optionF[0])
-        c = int(optionC[0])
-        list_images_contour_fenetrage  = fenetrage( image, f, 5 )
-        columns = st.columns(f)
-        for i in range( f ) :
-            with columns[i] :
-                cap = "Fenêtre"+str(i+1)
-                st.image( list_images_contour_fenetrage[f-1-i], caption=cap )
-    
-    
-    
     if( button1 ) :
         image_contour = contour( image )
         st.image( image_contour, caption="Image avec contour" )
@@ -190,7 +177,29 @@ elif choose == "Prétraitement" :
     if( button5 ) :
         image_contour_inf = lowerContour( image )
         st.image( image_contour_inf, caption="Image avec contour inferieur", clamp=True )
+    
+    st.write("#### Fenêtrage" )
+    col4, col5, col6 = st.columns(3)
+    with col4 :
+        optionI = st.selectbox( "Choisissez l'image à traiter : ", ('-', 'Image originale', 'Image avec contour') )
+    with col5 :
+        optionF = st.selectbox( "Choisissez le fenêtrage: ", ('-', '3 fenêtres', '4 fenêtres', '5 fenêtres', '6 fenêtres', '7 fenêtres', '8 fenêtres', '9 fenêtres') )
+    with col6 :
+        optionC = st.selectbox( "Choisissez le chevauchement : ", ('-', '2 pixels', '3 pixels', '4 pixels', '5 pixels', '6 pixels', '7 pixels', '8 pixels', '9 pixels') )    
         
+    if( optionI != "-" and optionF != "-" and optionC != "-" ) :
+        f = int(optionF[0])
+        c = int(optionC[0])
+        if( optionI == "Image originale" ) :
+            list_images_contour_fenetrage  = fenetrage( image, f, 5 )
+        elif( optionI == "Image avec contour" ) :
+             list_images_contour_fenetrage  = fenetrage( contour(image), f, 5 )
+        columns = st.columns(f)
+        for i in range( f ) :
+            with columns[i] :
+                cap = "Fenêtre"+str(i+1)
+                st.image( list_images_contour_fenetrage[f-1-i], caption=cap )
+                
 elif choose == "Extraction des caractéristiques" : 
     image = cv2.imread( "ae09_011.bmp", 0 )
     i = 14
