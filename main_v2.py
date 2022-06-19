@@ -344,6 +344,9 @@ elif choose == "Classification" :
                 st.write( "## ", classes_df.iloc[y-1][0] )
                 
 
+elif choose == "Contact" :
+    st.write( "### Nous sommes toujours ravis de votre contact!" )
+    st.write( "### Envoyez-nous un e-mail et dites-nous comment nous pouvons vous aider via cet mail : reconnaissance.manu.arb@gmail.com " )
 elif choose == "Aide" :
     st.write( "### - CSS : Caractéristiques statistiques et structurelles" )
     st.write( "### - Codage de Freeman avec chaîne normalisée : Caractéristiques extraites de la chaîne de code avec chaîne normalisée" )
