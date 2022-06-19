@@ -10,7 +10,7 @@ from sklearn.preprocessing import MinMaxScaler
 from streamlit_option_menu import option_menu
 
 with st.sidebar :
-    choose = option_menu("Menu", ["Accueil", "Prétraitement", "Extraction des caractéristiques", "Classification", "Contact"],
+    choose = option_menu("Menu", ["Accueil", "Prétraitement", "Extraction des caractéristiques", "Classification", "Contact", "Aide"],
                          icons=['house', 'gear-wide', 'table', 'stars','person lines fill'],
                          menu_icon="menu-app",
                          styles={
@@ -132,14 +132,6 @@ elif choose == "Prétraitement" :
      #   button2 = st.button( "Fenêtrage : 5Fenêtres, 3PixelsChevauchement", key="fenetrage5" )
     #with col5 :
      #   button3 = st.button( "Fenêtrage : 4Fenêtres, 4PixelsChevauchement", key="fenetrage4" )'''
-    
-    #st.write("#### Fenêtrage" )
-    #col4, col5 = st.columns(2)
-    #with col4 :
-     #   optionF = st.selectbox( "Choisissez le fenêtrage: ", ('-', '3 fenêtres', '4 fenêtres', '5 fenêtres', '6 fenêtres', '7 fenêtres', '8 fenêtres', '9 fenêtres') )
-    
-    #with col5 :
-     #   optionC = st.selectbox( "Choisissez le chevauchement : ", ('-', '2 pixels', '3 pixels', '4 pixels', '5 pixels', '6 pixels', '7 pixels', '8 pixels', '9 pixels') )
 
     if( button1 ) :
         image_contour = contour( image )
@@ -174,10 +166,11 @@ elif choose == "Prétraitement" :
     if( button4 ) :
         image_contour_sup = upperContour( image )
         st.image( image_contour_sup, caption="Image avec contour superieur", clamp=True )
+        
     if( button5 ) :
         image_contour_inf = lowerContour( image )
         st.image( image_contour_inf, caption="Image avec contour inferieur", clamp=True )
-    
+        
     st.write("#### Fenêtrage" )
     col4, col5, col6 = st.columns(3)
     with col4 :
@@ -260,20 +253,20 @@ elif choose == "Classification" :
     st.title( "Reconnaissance du manuscrite" )
     
     
-    option = st.selectbox( "Choisir le jeu de données utilisé lors de l'entrainement du modèle : ", ('-', 'Jeu de données 1', 'Jeu de données 2', 'Jeu de données 3') )
+    option = st.selectbox( "Choisir le jeu de données utilisé lors de l'entrainement du modèle : ", ('-', 'Jeu de données 1 (CSS + codage de Freeman avec chaîne normalisée)', 'Jeu de données 2 (CSS + codage de Freeman avec fréquences cumulées)', 'Jeu de données 3 (CSS)') )
     
     option1 = st.selectbox( "Choisir le fenêtrage : ", ('-', 'Fenêtrage 5, 3', 'Fenêtrage 4, 4') )
     st.write("")
     st.write("")
     st.write("")
-    if( option == "Jeu de données 1" and option1 == "Fenêtrage 5, 3" ) :
+    if( option == "Jeu de données 1 (CSS + codage de Freeman avec chaîne normalisée)" and option1 == "Fenêtrage 5, 3" ) :
         model = pickle.load(open("cn_5w/cn_5w.pkl",'rb'))
         fv = pd.read_csv("cn_5w/df1_5W.csv")
         #a,b,c=st.columns([0.5,4,0.5])
         #with b:
             #st.write( "### Taux de reconnaissance du modèle : 96.89%" )
         
-    if( option == "Jeu de données 1" and option1 == "Fenêtrage 4, 4" ) :
+    if( option == "Jeu de données 1 (CSS + codage de Freeman avec chaîne normalisée)" and option1 == "Fenêtrage 4, 4" ) :
         model = pickle.load(open("cn_4w/cn_4w.pkl",'rb'))
         fv = pd.read_csv("cn_4w/df1_4W.csv")
         l = []
@@ -286,21 +279,21 @@ elif choose == "Classification" :
         #with b:
             #st.write( "### Taux de reconnaissance du modèle : 95.43%" )
         
-    if( option == "Jeu de données 2" and option1 == "Fenêtrage 5, 3" ) :
+    if( option == "Jeu de données 2 (CSS + codage de Freeman avec fréquences cumulées)" and option1 == "Fenêtrage 5, 3" ) :
         model = pickle.load(open("fc_5w/fc_5w.pkl",'rb'))
         fv = pd.read_csv("fc_5w/df2_5W.csv")
         #a,b,c=st.columns([0.5,4,0.5])
         #with b:
             #st.write( "### Taux de reconnaissance du modèle : 98.01%" )
             
-    if( option == "Jeu de données 2" and option1 == "Fenêtrage 4, 4" ) :
+    if( option == "Jeu de données 2 (CSS + codage de Freeman avec fréquences cumulées)" and option1 == "Fenêtrage 4, 4" ) :
         model = pickle.load(open("fc_4w/fc_4w.pkl",'rb'))
         fv = pd.read_csv("fc_4w/df2_4W.csv")
         #a,b,c=st.columns([0.5,4,0.5])
         #with b:
             #st.write( "### Taux de reconnaissance du modèle : 98.08%" )
             
-    if( option == "Jeu de données 3" and option1 == "Fenêtrage 5, 3" ) :
+    if( option == "Jeu de données 3 (CSS)" and option1 == "Fenêtrage 5, 3" ) :
         model = pickle.load(open("ss_5w/ss_5w.pkl",'rb'))
         fv = pd.read_csv("ss_5w/df3_5W.csv")
         l = []
@@ -313,7 +306,7 @@ elif choose == "Classification" :
         #with b:
             #st.write( "### Taux de reconnaissance du modèle : 96.56%" )
     
-    if( option == "Jeu de données 3" and option1 == "Fenêtrage 4, 4" ) :
+    if( option == "Jeu de données 3 (CSS)" and option1 == "Fenêtrage 4, 4" ) :
         model = pickle.load(open("ss_4w/ss_4w.pkl",'rb'))
         fv = pd.read_csv("ss_4w/df3_4W.csv")
         l = []
@@ -349,3 +342,10 @@ elif choose == "Classification" :
                 st.write( "#### Reconnaissance du manuscrite : " )
             with bb :
                 st.write( "## ", classes_df.iloc[y-1][0] )
+                
+
+elif choose == "Aide" :
+    st.write( "### - CSS : Caractéristiques statistiques et structurelles" )
+    st.write( "### - Codage de Freeman avec chaîne normalisée : Caractéristiques extraites de la chaîne de code avec chaîne normalisée" )
+    st.write( "### - Codage de Freeman avec fréquences cumulées : Caracteristiques extraites de la chaine de code avec fréquences cumulées" )
+    
