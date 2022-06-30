@@ -250,12 +250,12 @@ elif choose == "Extraction des caractéristiques" :
     
 elif choose == "Classification" : 
     df = pd.read_csv( "df.csv" )
-    st.title( "Reconnaissance du manuscrite" )
+    st.title( "Reconnaissance du manuscrit" )
     
     
-    option = st.selectbox( "Choisir le jeu de données utilisé lors de l'entrainement du modèle : ", ('-', 'Jeu de données 1 (CSS + codage de Freeman avec chaîne normalisée)', 'Jeu de données 2 (CSS + codage de Freeman avec fréquences cumulées)', 'Jeu de données 3 (CSS)') )
+    option = st.selectbox( "Choisissez le jeu de données utilisé lors de l'entrainement du modèle : ", ('-', 'Jeu de données 1 (CSS + codage de Freeman avec chaîne normalisée)', 'Jeu de données 2 (CSS + codage de Freeman avec fréquences cumulées)', 'Jeu de données 3 (CSS)') )
     
-    option1 = st.selectbox( "Choisir le fenêtrage : ", ('-', 'Fenêtrage 5, 3', 'Fenêtrage 4, 4') )
+    option1 = st.selectbox( "Choisissez le fenêtrage : ", ('-', 'Fenêtrage 5, 3', 'Fenêtrage 4, 4') )
     st.write("")
     st.write("")
     st.write("")
@@ -339,7 +339,7 @@ elif choose == "Classification" :
             st.write( "#### Classe de l'image :  ", int(y) )
             aa,bb=st.columns([3,3])
             with aa :
-                st.write( "#### Reconnaissance du manuscrite : " )
+                st.write( "#### Reconnaissance du manuscrit : " )
             with bb :
                 st.write( "## ", classes_df.iloc[y-1][0] )
                 
